@@ -1,0 +1,268 @@
+/* ================= Projects Section ================= */
+#projects {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: white;
+    max-width: none;
+    margin: 0;
+    padding: 7rem 2rem 6rem 2rem; /* ✅ Balanced top & bottom spacing */
+
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* ✅ Keeps content starting slightly below navbar */
+    box-sizing: border-box;
+
+    /* smooth fade-in animation */
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+
+    /* ✅ FIX: prevent header overlap when clicking “Projects” link */
+    scroll-margin-top: 90px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title Styling */
+#projects h2 {
+    font-size: 2.5rem;
+    margin-top: 2rem; /* ✅ Added breathing space below navbar */
+    margin-bottom: 3.5rem; /* ✅ Balanced distance from project cards */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+}
+
+/* Project Grid Layout */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Project Card */
+.project {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Card Hover Effect */
+.project:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Subtle gradient overlay effect */
+.project::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,176,155,0.1), rgba(150,201,61,0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.project:hover::before {
+    opacity: 1;
+}
+
+.project img {
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.project:hover img {
+    transform: scale(1.05);
+}
+
+.project h3 {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+}
+
+.project p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    z-index: 1;
+    position: relative;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: #00b09b;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #00b09b;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.project a:hover {
+    background: #00b09b;
+    color: black;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+
+    /* ✅ Smooth scrolling for navigation */
+    scroll-behavior: smooth;
+}
+
+/* ================= Responsive Design ================= */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+    #projects {
+        padding: 5rem 1.5rem 4rem 1.5rem; /* ✅ Balanced on tablets */
+        scroll-margin-top: 80px;
+    }
+
+    #projects h2 {
+        font-size: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+    #projects {
+        padding: 4rem 1rem 3rem 1rem; /* ✅ Mobile-friendly spacing */
+        scroll-margin-top: 70px;
+    }
+
+    #projects h2 {
+        font-size: 1.8rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .project {
+        padding: 1rem;
+    }
+
+    .project h3 {
+        font-size: 1.1rem;
+    }
+
+    .project p {
+        font-size: 0.9rem;
+    }
+
+    .project a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+/* ================= Scroll Reveal Animation ================= */
+.project {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* When element becomes visible */
+.project.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= Animated Violet ↔ Yellow Header Colors (Smooth 3.5s - All Same) ================= */
+@keyframes hoverColorsVioletYellow {
+    0% { color: violet; }
+    50% { color: blue; }
+    100% { color: violet; }
+}
+
+/* Apply same smooth animation to all project headers */
+.project h3 {
+    animation: hoverColorsVioletYellow 3.5s infinite alternate;
+}
+
+/* ========================================================= */
+/* ✅ Added Section: Balance and User-Friendly Enhancements  */
+/* ========================================================= */
+
+/* Make all cards the same height */
+.project-grid {
+    align-items: stretch;
+}
+
+/* Flex layout inside cards for perfect spacing */
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Consistent image height and cropping */
+.project img {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* More breathing room between text elements */
+.project h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.project p {
+    margin-bottom: 1rem;
+}
+
+/* Slightly more spacing between cards on large screens */
+@media (min-width: 1025px) {
+    .project-grid {
+        gap: 2.5rem;
+    }
+}
+
+/* Fully centered layout and readable spacing on mobile */
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project img {
+        height: 160px;
+    }
+}

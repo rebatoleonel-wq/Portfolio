@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonel G. Rebato | PORTFOLIO</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="contact-footer.css">
+</head>
+<body>
+    <!-- ✅ Updated header with hamburger menu -->
+    <header>
+        <div class="profile-container">
+            <img src="Leonel.png" alt="Leonel" class="profile">
+            <h1>LEONEL G. REBATO</h1>
+        </div>
+
+        <!-- ✅ Hamburger icon -->
+        <div class="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <div class="about-container">
+            <h2>ABOUT ME</h2>
+            <p>
+                Hi! I'm <strong>Leonel G. Rebato</strong>, a third-year BSIT student currently studying at 
+                the Polytechnic University of the Philippines – Calauan. I'm passionate about learning 
+                web development and exploring different areas of technology. So far, my experience includes 
+                creating simple projects such as a Jack en Poy game, a number guessing game, and an operating 
+                system scheduler simulation. These projects have helped me build a foundation in development, 
+                and I’m committed to continuously improving my skills to apply everything I’ve learned in future projects.
+            </p>
+        </div>
+    </section>
+    
+
+    <section id="projects">
+        <h2>PROJECTS</h2>
+        <div class="project-grid">
+            <div class="project">
+                <img src="cpu_scheduling.png" alt="cpu scheduling">
+                <h3>CPU SCHEDULING</h3>
+                <p>CPU scheduling is the process used by the operating system to decide which process or thread should be executed by the CPU</p>
+                <a href="https://drive.google.com/file/d/1ZyEPFllmvzoDbOSsDcT5AGzlszugPTqD/view?usp=drive_link">View Project</a>
+            </div>
+
+            <div class="project">
+                <img src="css images.png" alt="css images">
+                <h3>CSS IMAGES</h3>
+                <p>The use of BG images, opacity, transparency and the use of filter effects. to create a basic image using css.</p>
+                <a href="https://drive.google.com/drive/folders/1bkum8CxBRJ5qAZvw7pxDe6cXEWiCDmX1?usp=sharing">View Project</a>
+            </div>
+
+            <div class="project">
+                <img src="personal_website.png" alt="personal website">
+                <h3>PERSONAL WEBSITE</h3>
+                <p>A personal website created by an individual to showcase information about themselves.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-card">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:rebatoleonel@gmail.com">rebatoleonel@gmail.com</a></p>
+        
+      
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+       </div>
+      </section>
+      
+
+    <footer>
+        <p>&copy; 2025 Leonel G. Rebato. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Select elements
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        const navLinks = document.querySelectorAll('nav a');
+    
+        // Toggle open/close on hamburger click
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('show');
+        });
+    
+        // Auto-close when a nav link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target); // animate once
+              }
+            });
+          }, { threshold: 0.2 });
+    
+          document.querySelectorAll(".project").forEach((el) => observer.observe(el));
+        });
+    </script>
+    
+</body>
+</html>
